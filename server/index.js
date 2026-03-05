@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import pool from './db.js';
+import pool, { initializeDatabase } from './db.js';
 
 dotenv.config();
 
@@ -113,6 +113,16 @@ app.get('/api/participants', async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    await initializeDatabase();
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed to start server due to database error:', err);
+    process.exit(1);
+  }
+};
+
+startServer();
