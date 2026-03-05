@@ -1,0 +1,27 @@
+services:
+  # Frontend: Vite React app (optional if you already host this elsewhere)
+  - type: web
+    name: club-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
+
+  # Backend: Node + Express API in server/ folder
+  - type: web
+    name: club-backend
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+
+# Optional: Render PostgreSQL database (you can also create this in UI)
+databases:
+  - name: club-db
+    plan: free
+    databaseName: club
+    user: club_user
