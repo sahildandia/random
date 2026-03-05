@@ -1,0 +1,16 @@
+services:
+  # Backend: Node + Express API in server/ folder (deployed to Render)
+  - type: web
+    name: club-backend
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+
+# Optional: Render PostgreSQL database (you can also create this in UI)
+databases:
+  - name: club-db
+    plan: free
+    databaseName: club
+    user: club_user
