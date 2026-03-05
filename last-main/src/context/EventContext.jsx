@@ -15,11 +15,11 @@ export const EventProvider = ({ children }) => {
     {
       id: 1,
       title: "STARTIQ",
-      date: "24 Feb 2026 | 9:00 AM to 4:00 PM",
+      date: "10 March 2026 | 9:00 AM to 4:00 PM",
       location: "M.Kumaraswamy College of Engineering",
       description: "🚀 STARTIQ is a Startup Pitch Event designed to encourage students to think beyond jobs and become job creators. \n\nParticipants will present their innovative startup ideas, explain their business models, and showcase how their ideas can solve real-world problems. The event provides a platform to gain confidence, receive expert feedback, and develop an entrepreneurial mindset.\n\n🌟 Event Outcome:\nStudents will gain exposure to startup culture, improve their presentation and problem-solving skills, and understand how to transform ideas into viable ventures. The event aims to inspire students to become entrepreneurs and future job creators.\n\n👥 Team Size:\n3 Members per team",
       image: "/banner/banner.png",
-      dateTarget: '2026-02-24T09:00:00', // Set to a future date for the countdown or keep it generic
+      dateTarget: '2026-03-10T09:00:00', // Set to the new event date for the countdown
       registrationLink: '/register'
     }
   ];
