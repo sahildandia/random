@@ -42,15 +42,26 @@ export const initializeDatabase = async () => {
     `);
 
     // Participants Table
+    // Base create in case table does not exist yet
     await pool.query(`
       CREATE TABLE IF NOT EXISTS participants (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         phone VARCHAR(50),
+        team_name VARCHAR(255),
+        registration_number VARCHAR(100),
+        members TEXT,
+        event VARCHAR(255),
         registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
       );
     `);
+
+    // Ensure newer columns exist even if participants table was created earlier
+    await pool.query(`ALTER TABLE participants ADD COLUMN IF NOT EXISTS team_name VARCHAR(255);`);
+    await pool.query(`ALTER TABLE participants ADD COLUMN IF NOT EXISTS registration_number VARCHAR(100);`);
+    await pool.query(`ALTER TABLE participants ADD COLUMN IF NOT EXISTS members TEXT;`);
+    await pool.query(`ALTER TABLE participants ADD COLUMN IF NOT EXISTS event VARCHAR(255);`);
 
     // Seed initial data if needed
     const { rows } = await pool.query('SELECT COUNT(*) FROM upcoming_events');

@@ -85,15 +85,26 @@ app.get('/api/past-events', async (req, res) => {
 
 // Register Participant
 app.post('/api/register', async (req, res) => {
-  const { name, email, phone } = req.body;
+  const {
+    name,
+    email,
+    phone,
+    teamName,
+    registrationNumber,
+    members,
+    event
+  } = req.body;
+
   if (!name || !email || !phone) {
     return res.status(400).json({ message: 'name, email and phone are required' });
   }
 
   try {
     const { rows } = await pool.query(
-      'INSERT INTO participants (name, email, phone) VALUES ($1, $2, $3) RETURNING *',
-      [name, email, phone]
+      `INSERT INTO participants (name, email, phone, team_name, registration_number, members, event)
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
+       RETURNING *`,
+      [name, email, phone, teamName || null, registrationNumber || null, members || null, event || null]
     );
     res.json(rows[0]);
   } catch (err) {

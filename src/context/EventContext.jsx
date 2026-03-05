@@ -127,7 +127,11 @@ export const EventProvider = ({ children }) => {
           body: JSON.stringify({
             name: participantData.name,
             email: participantData.email,
-            phone: participantData.phone
+            phone: participantData.phone,
+            teamName: participantData.teamName,
+            registrationNumber: participantData.registrationNumber,
+            members: participantData.members,
+            event: participantData.event
           })
         });
 
