@@ -32,18 +32,31 @@ const Register = () => {
       });
     };
 
-    const handleNext = (e) => {
-      e.preventDefault();
-      // Basic validation could go here
-      const requiredFields = ['teamName', 'name', 'registrationNumber', 'email', 'phone', 'event'];
-      const missing = requiredFields.filter(field => !formData[field]);
+        const handleNext = (e) => {
+            e.preventDefault();
+            // Require full details for team lead + 2 members
+            const requiredFields = [
+                'teamName',
+                'name',
+                'registrationNumber',
+                'email',
+                'phone',
+                'event',
+                'member2',
+                'member2RegNo',
+                'member2Email',
+                'member3',
+                'member3RegNo',
+                'member3Email'
+            ];
+            const missing = requiredFields.filter(field => !formData[field]);
       
-      if (missing.length > 0) {
-        alert('Please fill in all required fields');
-        return;
-      }
-      setStep(2);
-    };
+            if (missing.length > 0) {
+                alert('Please fill in all required fields for all 3 members');
+                return;
+            }
+            setStep(2);
+        };
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -239,6 +252,7 @@ const Register = () => {
                                     <input 
                                         type="text" 
                                         name="member2"
+                                        required
                                         value={formData.member2}
                                         onChange={handleChange}
                                         placeholder="Member Name" 
@@ -250,6 +264,7 @@ const Register = () => {
                                     <input 
                                         type="text" 
                                         name="member2RegNo"
+                                        required
                                         value={formData.member2RegNo}
                                         onChange={handleChange}
                                         placeholder="Reg No" 
@@ -261,6 +276,7 @@ const Register = () => {
                                     <input 
                                         type="email" 
                                         name="member2Email"
+                                        required
                                         value={formData.member2Email}
                                         onChange={handleChange}
                                         placeholder="member2@example.com" 
@@ -282,6 +298,7 @@ const Register = () => {
                                     <input 
                                         type="text" 
                                         name="member3"
+                                        required
                                         value={formData.member3}
                                         onChange={handleChange}
                                         placeholder="Member Name" 
@@ -293,6 +310,7 @@ const Register = () => {
                                     <input 
                                         type="text" 
                                         name="member3RegNo"
+                                        required
                                         value={formData.member3RegNo}
                                         onChange={handleChange}
                                         placeholder="Reg No" 
@@ -304,6 +322,7 @@ const Register = () => {
                                     <input 
                                         type="email" 
                                         name="member3Email"
+                                        required
                                         value={formData.member3Email}
                                         onChange={handleChange}
                                         placeholder="member3@example.com" 
