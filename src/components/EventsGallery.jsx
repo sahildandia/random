@@ -131,9 +131,9 @@ const EventsGallery = () => {
               <motion.div 
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
-                className="flex-1 w-full relative group"
+                className="flex-1 w-full max-w-xl md:max-w-2xl mx-auto relative group"
               >
-                 <img src={event.image} alt={event.title} className="rounded-2xl shadow-2xl w-full object-contain h-auto md:h-[400px]" />
+                 <img src={event.image} alt={event.title} className="rounded-2xl shadow-2xl w-full h-auto object-contain" />
                  {/* <div className="absolute inset-0 bg-gradient-to-t from-slate-100/80 dark:from-dark-bg/80 to-transparent rounded-2xl"></div> */}
               </motion.div>
               )}
