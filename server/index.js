@@ -124,6 +124,28 @@ app.get('/api/participants', async (req, res) => {
   }
 });
 
+// Delete participant (for admin portal)
+app.delete('/api/participants/:id', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+
+  if (Number.isNaN(id)) {
+    return res.status(400).json({ message: 'Invalid participant id' });
+  }
+
+  try {
+    const result = await pool.query('DELETE FROM participants WHERE id = $1', [id]);
+
+    if (result.rowCount === 0) {
+      return res.status(404).json({ message: 'Participant not found' });
+    }
+
+    res.json({ message: 'Deleted' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+});
+
 const startServer = async () => {
   try {
     await initializeDatabase();

@@ -156,8 +156,23 @@ export const EventProvider = ({ children }) => {
     }
   };
 
-  const deleteParticipant = (id) => {
-    setParticipants(participants.filter(p => p.id !== id));
+  const deleteParticipant = async (id) => {
+    try {
+      if (apiBaseUrl) {
+        const res = await fetch(`${apiBaseUrl}/api/participants/${id}`, {
+          method: 'DELETE'
+        });
+
+        if (!res.ok) {
+          console.error('Failed to delete participant from backend');
+          return;
+        }
+      }
+
+      setParticipants(prev => prev.filter(p => p.id !== id));
+    } catch (err) {
+      console.error('Error deleting participant', err);
+    }
   };
 
   const [pastEvents, setPastEvents] = useState([
