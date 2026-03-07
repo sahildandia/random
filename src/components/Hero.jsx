@@ -67,7 +67,7 @@ const Hero = () => {
             <motion.button 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={scrollToEvents}
+              onClick={() => window.open('https://iste.aaroh.app/', '_blank', 'noopener,noreferrer')}
               className="px-8 py-4 rounded-full bg-gradient-to-r from-royal-blue to-electric-purple text-white font-bold text-lg flex items-center gap-2 hover:opacity-90 transition-opacity shadow-lg shadow-electric-purple/20"
             >
               Register Now
