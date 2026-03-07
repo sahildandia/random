@@ -92,39 +92,21 @@ const EventsGallery = () => {
                    </div>
                  )}
 
-                 {event.registrationLink?.startsWith('http') ? (
-                    <a 
-                        href={event.registrationLink} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-block"
-                    >
-                         <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-dark-bg font-bold hover:bg-electric-purple dark:hover:bg-electric-purple hover:text-white transition-colors cursor-pointer"
-                        >
-                            Register Now
-                            <ArrowRight size={20} />
-                        </motion.div>
-                    </a>
-                 ) : (
-                    <Link 
-                        to={event.registrationLink || "/register"} 
-                        className="inline-block"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-dark-bg font-bold hover:bg-electric-purple dark:hover:bg-electric-purple hover:text-white transition-colors cursor-pointer"
-                        >
-                            Register Now
-                            <ArrowRight size={20} />
-                        </motion.div>
-                    </Link>
-                 )}
+                 <a 
+                  href="https://iste.aaroh.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block"
+                 >
+                   <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-dark-bg font-bold hover:bg-electric-purple dark:hover:bg-electric-purple hover:text-white transition-colors cursor-pointer"
+                  >
+                    Register Now
+                    <ArrowRight size={20} />
+                  </motion.div>
+                 </a>
                  
               </div>
               {event.image && (
